@@ -22,8 +22,7 @@ Ich habe es dennoch öffentlich online gestellt, **falls auch andere von den Bei
 ## Nutzung
 
 Einfach im Browser öffnen:
-👉 [GitHub Pages Link](https://dein-github-username.github.io/powershell-cheatsheet/)
-*(Link ggf. anpassen!)*
+👉 [GitHub Pages Link](https://github.com/ScheppertoO/PwshSelfHelp/)
 
 Oder Repository klonen und lokal öffnen:
 
