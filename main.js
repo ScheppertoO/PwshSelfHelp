@@ -28,8 +28,8 @@ fetch('powershell_cheatsheet_entries.json')
     .then(resp => resp.json())
     .then(data => {
         entries = data;
-        buildTOC(entries);
-        filteredEntries = entries;
+        filteredEntries = data;
+        buildTOC(filteredEntries);
         renderTOC();
         showEntry(0);
         updateLangUI();
@@ -44,8 +44,10 @@ function switchLang(lang) {
     document.getElementById('headline').textContent = LANG[lang].headline;
     buildTOC(filteredEntries);
     renderTOC();
-    showEntry(currentIndex || 0);
+    // Nach dem Umschalten explizit nochmal den aktuellen Eintrag neu laden!
+    if (filteredEntries.length) showEntry(currentIndex !== null ? currentIndex : 0);
 }
+
 function updateLangUI() {
     document.getElementById('searchInput').placeholder = LANG[currentLang].search;
     document.getElementById('toc-title').textContent = LANG[currentLang].toc;
@@ -59,7 +61,7 @@ function buildTOC(entryList) {
         let sub = (e.subcategory && typeof e.subcategory === "object" ? (e.subcategory[currentLang] || Object.values(e.subcategory)[0]) : (e.subcategory || "Allgemein"));
         if (!toc[cat]) toc[cat] = {};
         if (!toc[cat][sub]) toc[cat][sub] = [];
-        toc[cat][sub].push(i);
+        toc[cat][sub].push(i); // Index für filteredEntries, nicht entries!
     });
     Object.keys(toc).forEach(cat => {
         if (tocState[cat] === undefined) tocState[cat] = false;
@@ -68,6 +70,7 @@ function buildTOC(entryList) {
         });
     });
 }
+
 function renderTOC() {
     const tocDiv = document.getElementById('toc');
     tocDiv.innerHTML = "";
@@ -75,7 +78,7 @@ function renderTOC() {
         const catOpen = tocState[category];
         tocDiv.innerHTML += `
             <div class="toc-category" onclick="toggleTOC('${category}')">
-            <span class="arrow ${catOpen ? '➖' : '➕'}">&#${catOpen ? '9472' : '10133'};</span> ${category}
+            <span class="arrow">${catOpen ? '➖' : '➕'}</span> ${category}
             </div>`;
         if (catOpen) {
             const subs = toc[category];
@@ -84,13 +87,15 @@ function renderTOC() {
                 const subOpen = tocState[subKey];
                 tocDiv.innerHTML += `
                     <div class="toc-subcategory" onclick="toggleTOC('${category}','${sub}');event.stopPropagation();">
-                        <span class="arrow ${subOpen ? '➖' : '➕'}">&#${subOpen ? '9472' : '10133'};</span> ${sub}
+                        <span class="arrow">${subOpen ? '➖' : '➕'}</span> ${sub}
                     </div>`;
                 if (subOpen) {
                     tocDiv.innerHTML += `<div class="toc-entries">`;
                     subs[sub].forEach(idx => {
                         const selected = (idx === currentIndex) ? 'selected' : '';
-                        let title = entries[idx].title && typeof entries[idx].title === 'object' ? (entries[idx].title[currentLang] || Object.values(entries[idx].title)[0]) : entries[idx].title;
+                        let title = filteredEntries[idx].title && typeof filteredEntries[idx].title === 'object'
+                            ? (filteredEntries[idx].title[currentLang] || Object.values(filteredEntries[idx].title)[0])
+                            : filteredEntries[idx].title;
                         tocDiv.innerHTML += `<div class="toc-entry ${selected}" onclick="showEntry(${idx});event.stopPropagation();">${title}</div>`;
                     });
                     tocDiv.innerHTML += `</div>`;
@@ -99,6 +104,7 @@ function renderTOC() {
         }
     });
 }
+
 window.toggleTOC = function(category, subcategory) {
     if (subcategory === undefined) {
         tocState[category] = !tocState[category];
@@ -112,7 +118,8 @@ function showEntry(idx) {
     currentIndex = idx;
     renderTOC();
     document.getElementById('searchInput').value = "";
-    renderEntry(entries[idx]);
+    // Immer aus filteredEntries rendern!
+    renderEntry(filteredEntries[idx]);
 }
 
 function renderEntry(entry) {
@@ -164,7 +171,6 @@ function renderEntry(entry) {
     document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
 }
 
-
 function copyCode(btn) {
     const code = btn.parentElement.querySelector('code').innerText;
     navigator.clipboard.writeText(code);
@@ -176,8 +182,8 @@ function copyCode(btn) {
 document.getElementById('searchInput').addEventListener('input', function(e) {
     const value = e.target.value.toLowerCase();
     if (!value.trim()) {
-        entries = filteredEntries = window.entriesOriginal || entries;
-        buildTOC(entries);
+        filteredEntries = entries;
+        buildTOC(filteredEntries);
         renderTOC();
         showEntry(currentIndex || 0);
         return;
@@ -189,9 +195,7 @@ document.getElementById('searchInput').addEventListener('input', function(e) {
         (typeof entry.subcategory === "object" ? (entry.subcategory.de + " " + entry.subcategory.en) : entry.subcategory || "").toLowerCase().includes(value) ||
         (entry.tags || []).join(' ').toLowerCase().includes(value)
     );
-    if (!window.entriesOriginal) window.entriesOriginal = entries;
-    entries = filteredEntries;
-    buildTOC(entries);
+    buildTOC(filteredEntries);
     renderTOC();
     showEntry(filteredEntries.length ? 0 : null);
 });
