@@ -116,7 +116,6 @@ function showEntry(idx) {
 }
 
 function renderEntry(entry) {
-    
     const sheet = document.getElementById('cheatsheet');
     if (!entry) {
         sheet.innerHTML = `<div class="entry"><b>${LANG[currentLang].notfound}</b></div>`;
@@ -143,16 +142,11 @@ function renderEntry(entry) {
         </div>`;
     }
 
-     let category = entry.category && typeof entry.category === 'object'
-        ? (entry.category[currentLang] || Object.values(entry.category)[0]) : (entry.category || '');
-    let subcategory = entry.subcategory && typeof entry.subcategory === 'object'
-        ? (entry.subcategory[currentLang] || Object.values(entry.subcategory)[0]) : (entry.subcategory || '');
-    let title = entry.title && typeof entry.title === 'object'
-        ? (entry.title[currentLang] || Object.values(entry.title)[0]) : entry.title;
-    let problem = entry.problem && typeof entry.problem === 'object'
-        ? (entry.problem[currentLang] || Object.values(entry.problem)[0]) : entry.problem;
-    let explanation = entry.explanation && typeof entry.explanation === 'object'
-        ? (entry.explanation[currentLang] || Object.values(entry.explanation)[0]) : entry.explanation;
+    let category = entry.category && typeof entry.category === 'object' ? (entry.category[currentLang] || Object.values(entry.category)[0]) : (entry.category || '');
+    let subcategory = entry.subcategory && typeof entry.subcategory === 'object' ? (entry.subcategory[currentLang] || Object.values(entry.subcategory)[0]) : (entry.subcategory || '');
+    let title = entry.title && typeof entry.title === 'object' ? (entry.title[currentLang] || Object.values(entry.title)[0]) : entry.title;
+    let problem = entry.problem && typeof entry.problem === 'object' ? (entry.problem[currentLang] || Object.values(entry.problem)[0]) : entry.problem;
+    let explanation = entry.explanation && typeof entry.explanation === 'object' ? (entry.explanation[currentLang] || Object.values(entry.explanation)[0]) : entry.explanation;
 
     sheet.innerHTML = `
         <div class="entry">
@@ -169,6 +163,7 @@ function renderEntry(entry) {
     `;
     document.querySelectorAll('pre code').forEach(el => hljs.highlightElement(el));
 }
+
 
 function copyCode(btn) {
     const code = btn.parentElement.querySelector('code').innerText;
