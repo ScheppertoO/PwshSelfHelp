@@ -186,5 +186,66 @@
       "de": "Pipes geben Objekte von einem Cmdlet zum nächsten weiter. Viele Cmdlets erwarten und liefern Objekte. Filter, Auswahl und Verarbeitung sind damit sehr flexibel.",
       "en": "Pipes pass objects from one Cmdlet to the next. Many Cmdlets expect and return objects. Filtering, selection, and processing are therefore very flexible."
     }
+},
+{
+"title": {
+"de": "Vergleichs- und Zuweisungsoperatoren",
+    "en": "Comparison and Assignment Operators"
+    },
+
+  "category": {
+    "de": "Grundlagen",
+    "en": "Basics"
+  },
+  "tags": [
+    "Operatoren", "Vergleich", "Zuweisung", "Syntax"
+  ],
+  "problem": {
+    "de": "Ich möchte alle Operatoren für Vergleich und Zuweisung in PowerShell auf einen Blick.",
+    "en": "I want a quick reference for comparison and assignment operators in PowerShell."
+  },
+  "solution": {
+    "code": "<table><thead><tr><th>Operator</th><th>Bedeutung (de)</th><th>Meaning (en)</th></tr></thead><tbody><tr><td>-eq</td><td>Gleich</td><td>Equal</td></tr><tr><td>-ne</td><td>Ungleich</td><td>Not equal</td></tr><tr><td>-lt</td><td>Kleiner als</td><td>Less than</td></tr><tr><td>-le</td><td>Kleiner/gleich</td><td>Less or equal</td></tr><tr><td>-gt</td><td>Größer als</td><td>Greater than</td></tr><tr><td>-ge</td><td>Größer/gleich</td><td>Greater or equal</td></tr><tr><td>=</td><td>Zuweisung</td><td>Assignment</td></tr><tr><td>+=</td><td>Addition & Zuweisung</td><td>Add and assign</td></tr><tr><td>-=</td><td>Subtraktion & Zuweisung</td><td>Subtract and assign</td></tr><tr><td>++</td><td>Erhöht um 1</td><td>Increment by 1</td></tr><tr><td>--</td><td>Verringert um 1</td><td>Decrement by 1</td></tr></tbody></table>",
+    "language": "html",
+    "description": {
+      "de": "Wichtige Operatoren in PowerShell mit Erklärung.",
+      "en": "Important operators in PowerShell with explanations."
+    }
+  },
+  "explanation": {
+    "de": "Vergleichsoperatoren werden meist in Bedingungen und Filtern verwendet. Zuweisungsoperatoren brauchst du zum Ändern von Variablen.",
+    "en": "Comparison operators are mostly used in conditions and filters. Assignment operators are used to modify variables."
   }
+},
+  {
+  "title": {
+    "de": "Cmdlet-Verben: Übersicht",
+    "en": "Cmdlet Verbs: Overview"
+  },
+  "category": {
+    "de": "Grundlagen",
+    "en": "Basics"
+  },
+  "tags": [
+    "Cmdlet", "Verben", "Syntax", "Best Practice"
+  ],
+  "problem": {
+    "de": "Welche Verben werden für Cmdlets verwendet und was bedeuten sie?",
+    "en": "Which verbs are used for cmdlets and what do they mean?"
+  },
+  "solution": {
+    "code": "<table><thead><tr><th>Verb</th><th>Bedeutung (de)</th><th>Meaning (en)</th></tr></thead><tbody><tr><td>Get</td><td>Information abrufen</td><td>Retrieve information</td></tr><tr><td>Set</td><td>Einstellungen ändern</td><td>Change settings</td></tr><tr><td>New</td><td>Neu erstellen</td><td>Create new instances</td></tr><tr><td>Remove</td><td>Entfernen</td><td>Delete/remove</td></tr><tr><td>Invoke</td><td>Aktion ausführen</td><td>Execute an action</td></tr><tr><td>Start</td><td>Starten</td><td>Initiate</td></tr><tr><td>Stop</td><td>Stoppen</td><td>Terminate</td></tr><tr><td>Enable</td><td>Aktivieren</td><td>Enable/activate</td></tr><tr><td>Disable</td><td>Deaktivieren</td><td>Disable/deactivate</td></tr><tr><td>Test</td><td>Testen/Überprüfen</td><td>Test/check</td></tr><tr><td>Update</td><td>Aktualisieren</td><td>Update/refresh</td></tr></tbody></table>",
+    "language": "html",
+    "description": {
+      "de": "Die wichtigsten Cmdlet-Verben mit ihrer typischen Bedeutung.",
+      "en": "The most important cmdlet verbs with their typical meaning."
+    }
+  },
+  "explanation": {
+    "de": "Verwende diese Verben beim Schreiben und Finden von Cmdlets, damit deine Scripte verständlich und standardkonform bleiben.",
+    "en": "Use these verbs when writing and finding cmdlets so your scripts are clear and follow standards."
+  }
+}
+
+
 ]
