@@ -1,90 +1,190 @@
 [
-{
-"title": {"de": "Hilfe zu einem Cmdlet anzeigen", "en": "Show help for a Cmdlet"},
-"category": {"de": "Helper", "en": "Helper"},
-"tags": ["Get-Help", "Cmdlet", "Syntax"],
-"problem": {"de": "Ich möchte wissen, wie ein bestimmtes Cmdlet funktioniert.", "en": "I want to know how a specific Cmdlet works."},
-"solution": {
-"code": "Get-Help Get-Process -Examples",
-"language": "powershell"
-},
-"explanation": {"de": "Zeigt Beispielverwendungen des Cmdlets 'Get-Process'. Das ist hilfreich, um direkt funktionierende Aufrufe zu sehen.", "en": "Shows usage examples for the 'Get-Process' Cmdlet. This helps to quickly see working commands."}
-},
-{
-"title": {"de": "Alle verfügbaren Cmdlets anzeigen", "en": "List all available Cmdlets"},
-"category": {"de": "Helper", "en": "Helper"},
-"tags": ["Get-Command", "Cmdlet", "Module"],
-"problem": {"de": "Ich möchte herausfinden, welche Cmdlets verfügbar sind.", "en": "I want to find out which Cmdlets are available."},
-"solution": {
-"code": "Get-Command",
-"language": "powershell"
-},
-"explanation": {"de": "Listet alle installierten Cmdlets, Funktionen, Aliase und Anwendungen auf.", "en": "Lists all installed Cmdlets, functions, aliases, and applications."}
-},
-{
-"title": {"de": "Laufende Prozesse anzeigen", "en": "Show running processes"},
-"category": {"de": "System", "en": "System"},
-"tags": ["Get-Process", "System info"],
-"problem": {"de": "Ich möchte sehen, welche Prozesse auf dem System laufen.", "en": "I want to see which processes are running on the system."},
-"solution": {
-"code": "Get-Process | Format-Table -AutoSize",
-"language": "powershell"
-},
-"explanation": {"de": "Zeigt alle Prozesse im Tabellenformat an, automatisch angepasst für bessere Lesbarkeit.", "en": "Shows all running processes in a table format, auto-sized for readability."}
-},
-{
-"title": {"de": "Eigenschaften eines Objekts anzeigen", "en": "Show object properties"},
-"category": {"de": "Objekte", "en": "Objects"},
-"tags": ["Get-Member", "Objects", "Properties"],
-"problem": {"de": "Ich möchte wissen, welche Eigenschaften ein Objekt hat.", "en": "I want to know which properties an object has."},
-"solution": {
-"code": "Get-Process | Get-Member",
-"language": "powershell"
-},
-"explanation": {"de": "Gibt die Typinformationen zu den ausgegebenen Objekten zurück. Damit kannst du gezielt Eigenschaften wie 'CPU' oder 'Name' verwenden.", "en": "Returns the type information for the objects. This allows you to target properties like 'CPU' or 'Name'."}
-},
-{
-"title": {"de": "Wie finde ich das passende Cmdlet?", "en": "How do I find the right Cmdlet?"},
-"category": {"de": "Grundlagen", "en": "Basics"},
-"subcategory": {"de": "Wie finde ich Cmdlets?", "en": "How to find Cmdlets?"},
-"tags": ["Get-Command", "Alias", "Show-Command"],
-"problem": {"de": "Ich will eine Aufgabe erledigen, kenne aber das Cmdlet dafür nicht.", "en": "I want to perform a task but don't know the Cmdlet for it."},
-"solution": [
-{
-"code": "Get-Command user",
-"language": "powershell",
-"description": {"de": "Alle Cmdlets, die 'user' im Namen haben", "en": "All Cmdlets with 'user' in their name."}
-},
-{
-"code": "Get-Command -Verb Get",
-"language": "powershell",
-"description": {"de": "Alle Cmdlets mit dem Verb 'Get'", "en": "All Cmdlets that use the verb 'Get'."}
-}
-],
-"explanation": {"de": "Mit Get-Command kannst du nach Cmdlets suchen, die einen bestimmten Begriff enthalten. Show-Command bietet eine grafische Suche.", "en": "Use Get-Command to search for Cmdlets containing a keyword. Show-Command provides a graphical search."}
-},
-{
-"title": {"de": "Syntax und Hilfe für Cmdlets anzeigen", "en": "Show syntax and help for Cmdlets"},
-"category": {"de": "Grundlagen", "en": "Basics"},
-"subcategory": {"de": "Wie finde ich Syntax und Hilfe?", "en": "How to find syntax and help?"},
-"tags": ["Get-Help", "Online", "Examples"],
-"problem": {"de": "Ich kenne das Cmdlet, weiß aber nicht, wie ich es verwende.", "en": "I know the Cmdlet but not how to use it."},
-"solution": {
-"code": "Get-Help Get-Process\nGet-Help Get-Process -Examples\nGet-Help Get-Process -Online",
-"language": "powershell"
-},
-"explanation": {"de": "Mit Get-Help erhältst du eine Übersicht, mit -Examples praxisnahe Beispiele und mit -Online die vollständige Dokumentation im Browser.", "en": "Get-Help provides an overview, -Examples shows practical usage, and -Online opens the full documentation in your browser."}
-},
-{
-"title": {"de": "Wann kann ich Pipes benutzen?", "en": "When can I use pipes?"},
-"category": {"de": "Grundlagen", "en": "Basics"},
-"subcategory": {"de": "Wie funktioniert die Pipeline?", "en": "How does the pipeline work?"},
-"tags": ["Pipeline", "Pipes", "Objects", "Passing data"],
-"problem": {"de": "Ich weiß nicht, wann ich das Pipe-Zeichen | verwenden kann.", "en": "I don't know when to use the pipe symbol | in PowerShell."},
-"solution": {
-"code": "Get-Process | Where-Object { $_.CPU -gt 10 }",
-"language": "powershell"
-},
-"explanation": {"de": "Pipes geben Objekte von einem Cmdlet zum nächsten weiter. Viele Cmdlets erwarten und liefern Objekte. Filter, Auswahl und Verarbeitung sind damit sehr flexibel.", "en": "Pipes pass objects from one Cmdlet to the next. Many Cmdlets expect and return objects. Filtering, selection, and processing are therefore very flexible."}
-}
+  {
+    "title": {
+      "de": "Hilfe zu einem Cmdlet anzeigen",
+      "en": "Show help for a Cmdlet"
+    },
+    "category": { "de": "Helper", "en": "Helper" },
+    "tags": ["Get-Help", "Cmdlet", "Syntax"],
+    "problem": {
+      "de": "Ich möchte wissen, wie ein bestimmtes Cmdlet funktioniert.",
+      "en": "I want to know how a specific Cmdlet works."
+    },
+    "solution": {
+      "code": "Get-Help Get-Process -Examples",
+      "language": "powershell"
+    },
+    "explanation": {
+      "de": "Zeigt Beispielverwendungen des Cmdlets 'Get-Process'. Das ist hilfreich, um direkt funktionierende Aufrufe zu sehen.",
+      "en": "Shows usage examples for the 'Get-Process' Cmdlet. This helps to quickly see working commands."
+    }
+  },
+  {
+    "title": {
+      "de": "Alle verfügbaren Cmdlets anzeigen",
+      "en": "List all available Cmdlets"
+    },
+    "category": { "de": "Helper", "en": "Helper" },
+    "tags": ["Get-Command", "Cmdlet", "Module"],
+    "problem": {
+      "de": "Ich möchte herausfinden, welche Cmdlets verfügbar sind.",
+      "en": "I want to find out which Cmdlets are available."
+    },
+    "solution": {
+      "code": "Get-Command",
+      "language": "powershell"
+    },
+    "explanation": {
+      "de": "Listet alle installierten Cmdlets, Funktionen, Aliase und Anwendungen auf.",
+      "en": "Lists all installed Cmdlets, functions, aliases, and applications."
+    }
+  },
+  {
+    "title": {
+      "de": "Laufende Prozesse anzeigen",
+      "en": "Show running processes"
+    },
+    "category": { "de": "System", "en": "System" },
+    "tags": ["Get-Process", "System info"],
+    "problem": {
+      "de": "Ich möchte sehen, welche Prozesse auf dem System laufen.",
+      "en": "I want to see which processes are running on the system."
+    },
+    "solution": {
+      "code": "Get-Process | Format-Table -AutoSize",
+      "language": "powershell"
+    },
+    "explanation": {
+      "de": "Zeigt alle Prozesse im Tabellenformat an, automatisch angepasst für bessere Lesbarkeit.",
+      "en": "Shows all running processes in a table format, auto-sized for readability."
+    }
+  },
+  {
+    "title": {
+      "de": "Eigenschaften eines Objekts anzeigen",
+      "en": "Show object properties"
+    },
+    "category": { "de": "Objekte", "en": "Objects" },
+    "tags": ["Get-Member", "Objects", "Properties"],
+    "problem": {
+      "de": "Ich möchte wissen, welche Eigenschaften ein Objekt hat.",
+      "en": "I want to know which properties an object has."
+    },
+    "solution": {
+      "code": "Get-Process | Get-Member",
+      "language": "powershell"
+    },
+    "explanation": {
+      "de": "Gibt die Typinformationen zu den ausgegebenen Objekten zurück. Damit kannst du gezielt Eigenschaften wie 'CPU' oder 'Name' verwenden.",
+      "en": "Returns the type information for the objects. This allows you to target properties like 'CPU' or 'Name'."
+    }
+  },
+  {
+    "title": {
+      "de": "Wie finde ich das passende Cmdlet?",
+      "en": "How do I find the right Cmdlet?"
+    },
+    "category": { "de": "Grundlagen", "en": "Basics" },
+    "subcategory": {
+      "de": "Wie finde ich ...?",
+      "en": "How to find ...?"
+    },
+    "tags": ["Get-Command", "Alias", "Show-Command"],
+    "problem": {
+      "de": "Ich will eine Aufgabe erledigen, kenne aber das Cmdlet dafür nicht.",
+      "en": "I want to perform a task but don't know the Cmdlet for it."
+    },
+    "solution": [
+      {
+        "code": "Get-Command *user*",
+        "language": "powershell",
+        "description": {
+          "de": "Alle Cmdlets, die 'user' im Namen haben",
+          "en": "All Cmdlets with 'user' in their name."
+        }
+      },
+      {
+        "code": "Get-Command -Verb Get",
+        "language": "powershell",
+        "description": {
+          "de": "Alle Cmdlets mit dem Verb 'Get'",
+          "en": "All Cmdlets that use the verb 'Get'."
+        }
+      }
+    ],
+    "explanation": {
+      "de": "Mit Get-Command kannst du nach Cmdlets suchen, die einen bestimmten Begriff enthalten. Show-Command bietet eine grafische Suche.",
+      "en": "Use Get-Command to search for Cmdlets containing a keyword. Show-Command provides a graphical search."
+    }
+  },
+  {
+    "title": {
+      "de": "Syntax und Hilfe für Cmdlets anzeigen",
+      "en": "Show syntax and help for Cmdlets"
+    },
+    "category": { "de": "Grundlagen", "en": "Basics" },
+    "subcategory": {
+      "de": "Wie finde ich ...?",
+      "en": "How to find ...?"
+    },
+    "tags": ["Get-Help", "Online", "Examples"],
+    "problem": {
+      "de": "Ich kenne das Cmdlet, weiß aber nicht, wie ich es verwende.",
+      "en": "I know the Cmdlet but not how to use it."
+    },
+    "solution": {
+      "code": "Get-Help Get-Process\nGet-Help Get-Process -Examples\nGet-Help Get-Process -Online",
+      "language": "powershell"
+    },
+    "explanation": {
+      "de": "Mit Get-Help erhältst du eine Übersicht, mit -Examples praxisnahe Beispiele und mit -Online die vollständige Dokumentation im Browser.",
+      "en": "Get-Help provides an overview, -Examples shows practical usage, and -Online opens the full documentation in your browser."
+    }
+  },
+    {
+    "title": {
+        "de": "Pipes? Nutze sie!",
+        "en": "Pipes? Use it!"
+    },
+    "category": { "de": "Grundlagen", "en": "Basics" },
+    "subcategory": {
+        "de": "Pipes?",
+        "en": "Pipes?"
+    },
+    "tags": ["Pipes", "Pipeline","Passing data", "Objects"],
+    "problem": {
+        "de": "Was sind Pipelines und was machen sie?",
+        "en": "What are Pipelines and what are they doing?"
+    },
+    "explanation": {
+        "de": "In klassischen Unix- und Windows-Shells (wie Bash oder CMD) verbindet das Pipe-Zeichen | nur einfache Textströme.\n\n PowerShell unterscheidet sich hier grundlegend:\nIn der PowerShell-Pipeline werden strukturierte Objekte von einem Cmdlet zum nächsten weitergegeben – inklusive aller Eigenschaften und Methoden.\n\nDas macht die Verarbeitung von Daten viel robuster und komfortabler:\nAnstatt Text mit komplizierten Befehlen wie awk, grep oder sed zu durchsuchen, kannst du in PowerShell direkt mit den Eigenschaften der Objekte arbeiten, z.B. $_.CPU, $_.Name usw.\n\nDas Arbeiten mit Objekten in der Pipeline ist ein Alleinstellungsmerkmal von PowerShell und macht viele Aufgaben deutlich einfacher als in klassischen Shells!",
+         "en": "In traditional Unix and Windows shells (like Bash or CMD), the pipe symbol | only connects plain text streams.\nPowerShell is fundamentally different:\nIn the PowerShell pipeline, structured objects are passed from one cmdlet to the next – including all their properties and methods.\n\nThis makes data processing much more robust and convenient:\nInstead of searching text with complicated commands like awk, grep, or sed, you can work directly with the properties of objects in PowerShell, e.g., $_.CPU, $_.Name, etc.\n\nWorking with objects in the pipeline is a unique feature of PowerShell and makes many tasks much easier than in traditional shells!"
+    }
+
+
+    },
+  {
+    "title": {
+      "de": "Wann kann ich Pipes benutzen?",
+      "en": "When can I use pipes?"
+    },
+    "category": { "de": "Grundlagen", "en": "Basics" },
+    "subcategory": {
+      "de": "Pipes?",
+      "en": "Pipes?"
+    },
+    "tags": ["Pipeline", "Pipes", "Objects", "Passing data"],
+    "problem": {
+      "de": "Ich weiß nicht, wann ich das Pipe-Zeichen | verwenden kann.",
+      "en": "I don't know when to use the pipe symbol | in PowerShell."
+    },
+    "solution": {
+      "code": "Get-Process | Where-Object { $_.CPU -gt 10 }",
+      "language": "powershell"
+    },
+    "explanation": {
+      "de": "Pipes geben Objekte von einem Cmdlet zum nächsten weiter. Viele Cmdlets erwarten und liefern Objekte. Filter, Auswahl und Verarbeitung sind damit sehr flexibel.",
+      "en": "Pipes pass objects from one Cmdlet to the next. Many Cmdlets expect and return objects. Filtering, selection, and processing are therefore very flexible."
+    }
+  }
 ]

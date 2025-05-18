@@ -117,7 +117,7 @@ window.toggleTOC = function(category, subcategory) {
 function showEntry(idx) {
     currentIndex = idx;
     renderTOC();
-    document.getElementById('searchInput').value = "";
+    // document.getElementById('searchInput').value = "";
     // Immer aus filteredEntries rendern!
     renderEntry(filteredEntries[idx]);
 }
@@ -154,6 +154,9 @@ function renderEntry(entry) {
     let title = entry.title && typeof entry.title === 'object' ? (entry.title[currentLang] || Object.values(entry.title)[0]) : entry.title;
     let problem = entry.problem && typeof entry.problem === 'object' ? (entry.problem[currentLang] || Object.values(entry.problem)[0]) : entry.problem;
     let explanation = entry.explanation && typeof entry.explanation === 'object' ? (entry.explanation[currentLang] || Object.values(entry.explanation)[0]) : entry.explanation;
+    
+    // Convert newlines to HTML breaks
+    explanation = explanation.replace(/\n/g, '<br>');
 
     sheet.innerHTML = `
         <div class="entry">
