@@ -87,7 +87,7 @@ function renderTOC() {
     .forEach((category) => {
       const catOpen = tocState[category];
       tocDiv.innerHTML += `
-            <div class="toc-category" onclick="toggleTOC('${category}')">
+            <div class="toc-category" onclick="toggleTOC('${category}'); event.stopPropagation();">
             <span class="arrow">${catOpen ? "➖" : "➕"}</span> ${category}
             </div>`;
       if (catOpen) {
