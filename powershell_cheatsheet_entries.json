@@ -245,7 +245,62 @@
     "de": "Verwende diese Verben beim Schreiben und Finden von Cmdlets, damit deine Scripte verständlich und standardkonform bleiben.",
     "en": "Use these verbs when writing and finding cmdlets so your scripts are clear and follow standards."
   }
+},
+{
+  "title": {
+    "de": "Steuerung von Fehler-, Warn- und Ausgabeparametern",
+    "en": "Controlling Error, Warning, and Output Parameters"
+  },
+  "category": {
+    "de": "Erweiterte Parameter",
+    "en": "Advanced Parameters"
+  },
+  "subcategory": {
+    "de": "Common Parameter",
+    "en": "Common Parameters"
+  },
+  "tags": ["ErrorAction", "ErrorVariable", "Verbose", "Debug", "OutVariable", "PipelineVariable"],
+  "problem": {
+    "de": "Ich möchte steuern, wie Fehler, Warnungen und Ausgaben verarbeitet werden.",
+    "en": "I want to control how errors, warnings, and outputs are handled."
+  },
+  "solution": [
+    {
+      "code": "Get-Process -ErrorAction Stop",
+      "language": "powershell",
+      "description": {
+        "de": "Bricht bei Fehlern sofort ab",
+        "en": "Stops immediately on error"
+      }
+    },
+    {
+      "code": "Get-Service -Name \"xyz\" -ErrorAction SilentlyContinue -ErrorVariable myErr",
+      "language": "powershell",
+      "description": {
+        "de": "Fehler unterdrücken, aber speichern",
+        "en": "Suppress error but store in variable"
+      }
+    },
+    {
+      "code": "Get-Process -OutVariable allProcs",
+      "language": "powershell",
+      "description": {
+        "de": "Ergebnisse zusätzlich in Variable speichern",
+        "en": "Also store results in variable"
+      }
+    },
+    {
+      "code": "Get-ChildItem | Where-Object { $_.Length -gt 1MB } -PipelineVariable bigFile | ForEach-Object { \"Found: $($bigFile.Name)\" }",
+      "language": "powershell",
+      "description": {
+        "de": "Pipeline-Zugriff",
+        "en": "Access pipeline object"
+      }
+    }
+  ],
+  "explanation": {
+    "de": "Diese Parameter steuern, wie PowerShell mit Fehlern, Warnungen, Informationen und Ausgaben umgeht. Sie sind in vielen Cmdlets als sog. Common Parameters verfügbar.",
+    "en": "These parameters control how PowerShell handles errors, warnings, information, and outputs. They are available in many Cmdlets as 'Common Parameters'."
+  }
 }
-
-
 ]

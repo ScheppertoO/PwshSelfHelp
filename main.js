@@ -319,3 +319,34 @@ document.getElementById("searchInput").addEventListener("input", function (e) {
   renderTOC();
   showEntry(filteredEntries.length ? 0 : null);
 });
+document.getElementById('toc-toggle').addEventListener('click', () => {
+    document.querySelector('.sidebar').classList.toggle('open');
+    document.body.classList.toggle('toc-open');
+});
+
+document.addEventListener('click', (e) => {
+    if (!document.body.classList.contains('toc-open')) return;
+
+    const sidebar = document.querySelector('.sidebar');
+    const toggle = document.getElementById('toc-toggle');
+
+    // Wenn Klick innerhalb von Sidebar oder TOC-Pfeilen/Submenüs → nichts tun
+    if (sidebar.contains(e.target) || toggle.contains(e.target)) return;
+
+    // Sonst Sidebar schließen
+    sidebar.classList.remove('open');
+    document.body.classList.remove('toc-open');
+});
+
+function showEntry(idx) {
+    currentIndex = idx;
+    renderTOC();
+    document.getElementById('searchInput').value = "";
+    renderEntry(filteredEntries[idx]);
+
+    // Mobile: Sidebar schließen
+    if (window.innerWidth <= 800) {
+        document.querySelector('.sidebar').classList.remove('open');
+        document.body.classList.remove('toc-open');
+    }
+}
