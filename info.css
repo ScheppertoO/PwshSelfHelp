@@ -1,0 +1,44 @@
+/* info.css - Lesefreundliche Infoseiten */
+
+.info-page {
+  max-width: 760px;
+  margin: 0 auto 3em auto;
+  background: #212c36;
+  color: #f6f6f6;
+  border-radius: 16px;
+  box-shadow: 0 3px 24px #0004;
+  padding: 2.5em 2em 2em 2em;
+  font-size: 1.17em;
+  line-height: 1.7;
+}
+
+.info-page h1, .info-page h2, .info-page h3 {
+  color: #36ffe4;
+  margin-top: 1.4em;
+}
+.info-page h1 { font-size: 2em; border-bottom: 2px solid #36ffe433; padding-bottom: 0.2em;}
+.info-page h2 { font-size: 1.32em; margin-bottom: 0.5em; }
+.info-page h3 { font-size: 1.12em; margin-bottom: 0.2em; }
+
+.info-page ul, .info-page ol { padding-left: 1.5em; }
+.info-page li { margin-bottom: 0.38em; }
+
+.infobox, .tipbox {
+  background: #2b4a42;
+  border-left: 4px solid #36ffe4;
+  color: #b8fff0;
+  padding: 1em 1.2em;
+  border-radius: 8px;
+  margin: 1.2em 0 1.6em 0;
+  font-size: 1em;
+}
+
+.tipbox {
+  background: #212f36;
+  border-left-color: #ffd336;
+  color: #fff6d8;
+}
+
+@media (max-width: 900px) {
+  .info-page { padding: 1.2em 0.5em; }
+}
